@@ -44,7 +44,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;display:block}
 #dmg-flash{position:fixed;inset:0;background:rgba(220,38,38,0);pointer-events:none;z-index:26;transition:background .1s}
 /* SCREENS */
 .scr{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:50;padding:20px}
-#scr-menu{background:radial-gradient(ellipse at 50% 30%,#050525,#000010)}
+#scr-menu{background:radial-gradient(ellipse at 50% 30%,#050525,#000010);position:fixed}
 .menu-stars{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .scr-title{color:transparent;font-size:clamp(2.5rem,13vw,6rem);font-weight:900;letter-spacing:.15em;text-align:center;line-height:1;position:relative;z-index:1;background:linear-gradient(135deg,#00e5ff,#a78bfa,#f97316);-webkit-background-clip:text;background-clip:text;text-shadow:none;filter:drop-shadow(0 0 20px rgba(0,229,255,.6));animation:glitch 5s infinite}
 @keyframes glitch{0%,90%,100%{transform:none;filter:drop-shadow(0 0 20px rgba(0,229,255,.6))}92%{transform:translateX(-3px);filter:drop-shadow(3px 0 0 #f97316) drop-shadow(-3px 0 0 #00e5ff)}94%{transform:translateX(3px);filter:drop-shadow(-3px 0 0 #f97316) drop-shadow(3px 0 0 #a78bfa)}96%{transform:none;filter:drop-shadow(0 0 20px rgba(0,229,255,.6))}}
@@ -101,7 +101,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;display:block}
 
 <!-- MENU -->
 <div class="scr" id="scr-menu">
-  <canvas class="menu-stars" id="star-canvas"></canvas>
+  <canvas id="star-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
   <div class="scr-title">SPACE<br/>COP</div>
   <div class="scr-sub">ALIEN INVASION · DEEP SPACE</div>
   <div class="info-box">
@@ -812,7 +812,7 @@ const loop=()=>{
   // Items
   for(let i=items.length-1;i>=0;i--){
     const it=items[i];if(dst(it,player)<26){
-      items.splice(i,1);score+=80;sPU();addSpark(player.x,player.y,10,it.c+'33'?`rgba(${parseInt(it.c.slice(1,3),16)},${parseInt(it.c.slice(3,5),16)},${parseInt(it.c.slice(5,7),16)},`:'rgba(0,229,255,');
+      items.splice(i,1);score+=80;sPU();addSpark(player.x,player.y,10,'rgba(0,229,255,');
       if(it.type==='MEDKIT'){lives=Math.min(5,lives+1);showPU('💊 VIDA RESTAURADA');}
       else if(it.type==='SHIELD'){shielded=true;puType='SHIELD';puEnd=now+8000;document.getElementById('shield-overlay').style.display='block';showPU('🛡 ESCUDO ACTIVO');sShield();}
       else if(it.type==='NUKE'){addExplosion(W/2,(H-CTRL_H)/2,50);flashScreen('rgba(34,197,94,.4)',150);aliens.forEach((_,zi)=>{addBloodAlien(aliens[zi].x,aliens[zi].y,6);aliens[zi]={id:uid++,...safe(player,SAFE),dir:1,big:Math.random()>.75};});bosses.forEach(b=>{b.hp-=8;addBloodAlien(b.x,b.y,8);});score+=aliens.length*15;kills+=aliens.length;showPU('☢ NUKE DETONADO');}
