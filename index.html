@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-<title>ASTRO COP — Alien Invasion</title>
+<title>SPACE COP MW — Alien Invasion</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:'Courier New',monospace;touch-action:none;user-select:none;-webkit-user-select:none}
@@ -102,7 +102,7 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;display:block}
 <!-- MENU -->
 <div class="scr" id="scr-menu">
   <canvas class="menu-stars" id="star-canvas"></canvas>
-  <div class="scr-title">ASTRO<br/>COP</div>
+  <div class="scr-title">SPACE<br/>COP</div>
   <div class="scr-sub">ALIEN INVASION · DEEP SPACE</div>
   <div class="info-box">
     <div class="info-row"><span>🕹️</span><span><strong>Joystick</strong> para maniobrar</span></div>
@@ -654,7 +654,7 @@ const drawPortal=(x,y)=>{
 // ══════════════════════════════════════════════════
 // GAME STATE
 // ══════════════════════════════════════════════════
-const HS='astrocop_hs';
+const HS='spacecop_mw_hs';
 let gs='menu',level=1,lives=3,score=0,kills=0,novas=3;
 let frozen=false,freezeEnd=0,puType=null,puEnd=0,shielded=false;
 let player,aliens=[],bosses=[],bullets=[],items=[],portalP;
